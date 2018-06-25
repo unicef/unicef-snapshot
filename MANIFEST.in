@@ -17,7 +17,7 @@ prune .circleci
 prune tests
 
 recursive-include src/unicef_snapshot *.*
-recursive-include src/requirements *.pip
+recursive-include src/requirements *.txt
 recursive-exclude tests *
 recursive-include docs *
 

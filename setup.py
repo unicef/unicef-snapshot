@@ -7,6 +7,7 @@ import re
 import sys
 from codecs import open
 from setuptools import setup, find_packages
+from setuptools.command.install import install
 
 ROOT = os.path.realpath(os.path.dirname(__file__))
 init = os.path.join(ROOT, 'src', 'unicef_snapshot', '__init__.py')
@@ -36,6 +37,19 @@ tests_requires = read('install.txt', 'testing.txt')
 # tests_requires = convert_deps_to_pip(pfile['dev-packages'], r=False)
 
 
+class VerifyTagVersion(install):
+    """Verify that the git tag matches version"""
+
+    def run(self):
+        tag = os.getenv("CIRCLE_TAG")
+        if tag != VERSION:
+            info = "Git tag: {} does not match the version of this app: {}".format(
+                tag,
+                VERSION
+            )
+            sys.exit(info)
+
+
 setup(name=NAME,
       version=VERSION,
       url='https://github.com/unicef/unicef-snapshot',
@@ -58,4 +72,8 @@ setup(name=NAME,
           'Programming Language :: Python :: 3.6',
           'Framework :: Django',
           'Intended Audience :: Developers'],
-      scripts=[])
+      scripts=[],
+      cmdclass={
+          "verify": VerifyTagVersion,
+      }
+)
