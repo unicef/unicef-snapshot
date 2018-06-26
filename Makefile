@@ -1,4 +1,3 @@
-SETTINGS=unicef_snapshot.settings.testing
 BUILDDIR=build
 BUILD_NUMBER=0
 PYPI_SERVER?=pypi.org
@@ -13,6 +12,7 @@ help:
 	@echo '   make coverage                    run coverage                       '
 	@echo '   make test                        run tests                          '
 	@echo '   make develop                     update develop environment         '
+	@echo '   make requirements                generate requirements files from Pipfile'
 	@echo '                                                                       '
 
 
@@ -50,6 +50,11 @@ fullclean:
 lint:
 	flake8 src/ tests/; exit 0;
 	isort src/ tests/ --check-only -rc; exit 0;
+
+
+requirements:
+	pipenv lock -r > src/requirements/install.pip
+	pipenv lock -r -d > src/requirements/testing.pip
 
 
 test:

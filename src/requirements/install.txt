@@ -1,4 +1,0 @@
-django>=1.10.8
-djangorestframework>=3.5.3
-django-model-utils>=2.6
-psycopg2-binary>=2.7.4
