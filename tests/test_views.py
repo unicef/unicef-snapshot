@@ -10,7 +10,6 @@ from tests.factories import ActivityFactory, UserFactory
 from unicef_snapshot.models import Activity
 
 pytestmark = pytest.mark.django_db
-
 tz = timezone.get_default_timezone()
 
 
