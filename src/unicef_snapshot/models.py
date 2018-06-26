@@ -4,9 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.fields import JSONField
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
-
 from django.utils.translation import ugettext as _
-
 from model_utils.models import TimeStampedModel
 
 
@@ -73,7 +71,7 @@ class Activity(TimeStampedModel):
                         titles.append(str(field_name))
                     except FieldDoesNotExist:
                         continue
-            except:
+            except AttributeError:
                 titles.append("unknown")
 
             return _('Changed {}').format(', '.join(titles))

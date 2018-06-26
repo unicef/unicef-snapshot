@@ -2,7 +2,6 @@ import datetime
 
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
-
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAdminUser
 

@@ -1,8 +1,7 @@
 import pytest
-
 from django.forms import model_to_dict
-
 from tests.factories import AuthorFactory, BookFactory, UserFactory
+
 from unicef_snapshot import utils
 
 pytestmark = pytest.mark.django_db
