@@ -29,7 +29,7 @@ def read(*files):
     return "\n".join(filter(lambda l:not l.startswith('-'), content))
 
 
-install_requires = read('install.pip'),
+install_requires = read('install.pip')
 tests_requires = read('install.pip', 'testing.pip')
 
 # pfile = Project(chdir=False).parsed_pipfile
