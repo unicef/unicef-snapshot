@@ -39,7 +39,7 @@ jobs:
     docker:
       - image: circleci/python:3.6
         environment:
-          API_URL: https://api.github.com/repos/unicef/unicef-snapshota
+          API_URL: https://api.github.com/repos/unicef/unicef-snapshot
     steps:
       - checkout
       - add_ssh_keys:
