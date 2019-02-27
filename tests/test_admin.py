@@ -5,6 +5,7 @@ from demo.sample.admin import AuthorAdmin
 from demo.sample.models import Author
 
 from unicef_snapshot.models import Activity
+from unicef_snapshot.admin import ActivityAdmin
 
 pytestmark = pytest.mark.django_db
 
@@ -18,6 +19,8 @@ def test_admin_has_add_permission(admin_site):
     aa = AuthorAdmin(Author, admin_site)
     activity_admin = aa.inlines[0](Author, admin_site)
     assert activity_admin.has_add_permission(request=None) is False
+    main_activity_admin = ActivityAdmin(Activity, admin_site)
+    assert main_activity_admin.has_add_permission(request=None) is False
 
 
 def test_admin_save_update(admin_site, author, user):
