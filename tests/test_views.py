@@ -40,7 +40,6 @@ def test_list(api_client):
 def test_filter_user(api_client):
     ActivityFactory(action=Activity.CREATE)
     activity = ActivityFactory(action=Activity.UPDATE)
-    print(activity.by_user.email)
     response = api_client.get(
         reverse("snapshot:activity-list"),
         data={

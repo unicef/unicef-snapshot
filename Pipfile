@@ -7,7 +7,7 @@ name = "pypi"
 djangorestframework = ">=3.5.3"
 django-model-utils = ">=2.6"
 Django = ">=1.10.8"
-"psycopg2" = ">=2.7.4"
+"psycopg2-binary" = ">=2.7.4"
 
 [dev-packages]
 "flake8" = "*"
