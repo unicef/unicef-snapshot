@@ -4,10 +4,15 @@ import ast
 import codecs
 import os.path
 import re
+import subprocess
 import sys
 from codecs import open
-from setuptools import setup, find_packages
+from distutils import log
+from distutils.errors import DistutilsError
+
+from setuptools import find_packages, setup
 from setuptools.command.install import install
+from setuptools.command.sdist import sdist as BaseSDistCommand
 
 ROOT = os.path.realpath(os.path.dirname(__file__))
 init = os.path.join(ROOT, 'src', 'unicef_snapshot', '__init__.py')
