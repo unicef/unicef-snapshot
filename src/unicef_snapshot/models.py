@@ -55,7 +55,7 @@ class Activity(TimeStampedModel):
             by_user = self.by_user.email
         return by_user
 
-    def get_action_display(self):
+    def get_display(self):
         if self.action == Activity.CREATE:
             return _('Created')
         elif self.action == Activity.UPDATE:

@@ -44,42 +44,42 @@ def test_delete_target():
     assert activity_updated.target is None
 
 
-def test_get_action_display_create():
+def test_get_display_create():
     activity = ActivityFactory(action=Activity.CREATE)
-    assert activity.get_action_display() == "Created"
+    assert activity.get_display() == "Created"
 
 
-def test_get_action_display_update_no_change_value():
+def test_get_display_update_no_change_value():
     author = AuthorFactory()
     activity = ActivityFactory(target=author, action=Activity.UPDATE)
-    assert activity.get_action_display() == "Changed unknown"
+    assert activity.get_display() == "Changed unknown"
 
 
-def test_get_action_display_update_many_field():
+def test_get_display_update_many_field():
     author = AuthorFactory()
     activity = ActivityFactory(
         target=author,
         action=Activity.UPDATE,
         change={"books": ""}
     )
-    assert activity.get_action_display() == "Changed books"
+    assert activity.get_display() == "Changed books"
 
 
-def test_get_action_display_update_invalid_field():
+def test_get_display_update_invalid_field():
     author = AuthorFactory()
     activity = ActivityFactory(
         target=author,
         action=Activity.UPDATE,
         change={"wrong": ""}
     )
-    assert activity.get_action_display() == "Changed "
+    assert activity.get_display() == "Changed "
 
 
-def test_get_action_display_update():
+def test_get_display_update():
     author = AuthorFactory()
     activity = ActivityFactory(
         target=author,
         action=Activity.UPDATE,
         change={"name": ""}
     )
-    assert activity.get_action_display() == "Changed name"
+    assert activity.get_display() == "Changed name"
