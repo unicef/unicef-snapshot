@@ -29,12 +29,32 @@ def read(*files):
     return "\n".join(filter(lambda l:not l.startswith('-'), content))
 
 
-install_requires = read('install.pip')
-tests_requires = read('install.pip', 'testing.pip')
+def check(cmd, filename):
+    out = subprocess.run(cmd, stdout=subprocess.PIPE)
+    f = os.path.join('src', 'requirements', filename)
+    reqs = codecs.open(os.path.join(ROOT, f), 'r').readlines()
+    existing = {re.split("(==|>=|<=>|<|)", name[:-1])[0] for name in reqs}
+    declared = {
+        re.split("(==|>=|<=>|<|)", name)[0]
+        for name in out.stdout.decode('utf8').split("\n")
+        if name and not name.startswith('-')
+    }
 
-# pfile = Project(chdir=False).parsed_pipfile
-# install_requires = convert_deps_to_pip(pfile['packages'], r=False)
-# tests_requires = convert_deps_to_pip(pfile['dev-packages'], r=False)
+    if existing != declared:
+        msg = """Requirements file not updated.
+Run 'make requiremets'
+""".format(' '.join(cmd), f)
+        raise DistutilsError(msg)
+
+
+class SDistCommand(BaseSDistCommand):
+    def run(self):
+        checks = {'install.pip': ['pipenv', 'lock', '--requirements'],
+                  'testing.pip': ['pipenv', 'lock', '-d', '--requirements']}
+
+        for filename, cmd in checks.items():
+            check(cmd, filename)
+        super().run()
 
 
 class VerifyTagVersion(install):
@@ -61,9 +81,9 @@ setup(name=NAME,
       package_dir={'': 'src'},
       packages=find_packages(where='src'),
       include_package_data=True,
-      install_requires=install_requires,
+      install_requires=read('install.pip'),
       extras_require={
-          'test': tests_requires,
+          'test': read('install.pip', 'testing.pip'),
       },
       platforms=['any'],
       classifiers=[
@@ -73,6 +93,7 @@ setup(name=NAME,
           'Intended Audience :: Developers'],
       scripts=[],
       cmdclass={
+          'sdist': SDistCommand,
           "verify": VerifyTagVersion,
       }
 )
