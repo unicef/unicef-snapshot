@@ -47,7 +47,7 @@ def check(cmd, filename):
 
     if existing != declared:
         msg = """Requirements file not updated.
-Run 'make requiremets'
+Run 'make requirements'
 """.format(' '.join(cmd), f)
         raise DistutilsError(msg)
 
@@ -75,30 +75,32 @@ class VerifyTagVersion(install):
             sys.exit(info)
 
 
-setup(name=NAME,
-      version=VERSION,
-      url='https://github.com/unicef/unicef-snapshot',
-      author='UNICEF',
-      author_email='dev@unicef.org',
-      license="Apache 2 License",
-      description='Snapshot of data changes in django models',
-      long_description=codecs.open('README.md').read(),
-      package_dir={'': 'src'},
-      packages=find_packages(where='src'),
-      include_package_data=True,
-      install_requires=read('install.pip'),
-      extras_require={
-          'test': read('install.pip', 'testing.pip'),
-      },
-      platforms=['any'],
-      classifiers=[
-          'Environment :: Web Environment',
-          'Programming Language :: Python :: 3.6',
-          'Framework :: Django',
-          'Intended Audience :: Developers'],
-      scripts=[],
-      cmdclass={
-          'sdist': SDistCommand,
-          "verify": VerifyTagVersion,
-      }
+setup(
+    name=NAME,
+    version=VERSION,
+    url='https://github.com/unicef/unicef-snapshot',
+    author='UNICEF',
+    author_email='dev@unicef.org',
+    license="Apache 2 License",
+    description='Snapshot of data changes in django models',
+    long_description=codecs.open('README.md').read(),
+    package_dir={'': 'src'},
+    packages=find_packages(where='src'),
+    include_package_data=True,
+    install_requires=read('install.pip'),
+    extras_require={
+        'test': read('install.pip', 'testing.pip'),
+    },
+    platforms=['any'],
+    classifiers=[
+        'Environment :: Web Environment',
+        'Programming Language :: Python :: 3.6',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+    ],
+    scripts=[],
+    cmdclass={
+        'sdist': SDistCommand,
+        "verify": VerifyTagVersion,
+    }
 )
