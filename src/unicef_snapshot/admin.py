@@ -11,7 +11,7 @@ class SnapshotModelAdmin(admin.ModelAdmin):
         if hasattr(obj, "pk") and obj.pk is not None:
             pre_save = obj.__class__.objects.get(pk=obj.pk)
         pre_save = create_dict_with_relations(pre_save)
-        super(SnapshotModelAdmin, self).save_model(request, obj, form, change)
+        super().save_model(request, obj, form, change)
         create_snapshot(obj, pre_save, request.user)
 
 
