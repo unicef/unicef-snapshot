@@ -15,6 +15,6 @@ class ActivitySerializer(serializers.ModelSerializer):
 class SnapshotModelSerializer(serializers.ModelSerializer):
     def save(self, **kwargs):
         pre_save = create_dict_with_relations(self.instance)
-        super(SnapshotModelSerializer, self).save(**kwargs)
+        super().save(**kwargs)
         create_snapshot(self.instance, pre_save, self.context["request"].user)
         return self.instance

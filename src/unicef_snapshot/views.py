@@ -61,7 +61,7 @@ class ActivityListView(ListAPIView):
         return queryset
 
 
-class FSMSnapshotViewMixin(object):
+class FSMSnapshotViewMixin:
     def pre_transition(self, instance, action):
         super().pre_transition(instance, action)
         self._pre_save = create_dict_with_relations(instance)
