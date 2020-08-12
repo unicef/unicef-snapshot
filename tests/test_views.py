@@ -1,12 +1,13 @@
 import datetime
 import json
 
-import pytest
 from django.urls import reverse
 from django.utils import timezone
 from rest_framework import status
-from tests.factories import ActivityFactory, UserFactory
 
+import pytest
+
+from tests.factories import ActivityFactory, UserFactory
 from unicef_snapshot.models import Activity
 
 pytestmark = pytest.mark.django_db

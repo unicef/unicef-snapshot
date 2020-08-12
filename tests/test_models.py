@@ -1,6 +1,6 @@
 import pytest
-from tests.factories import ActivityFactory, AuthorFactory, UserFactory
 
+from tests.factories import ActivityFactory, AuthorFactory, UserFactory
 from unicef_snapshot.models import Activity
 
 pytestmark = pytest.mark.django_db

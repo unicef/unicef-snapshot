@@ -1,6 +1,7 @@
+from rest_framework import authentication, permissions, viewsets
+
 from demo.sample.models import Author
 from demo.sample.serializers import AuthorSerializer
-from rest_framework import authentication, permissions, viewsets
 
 
 class AuthorViewSet(viewsets.ModelViewSet):

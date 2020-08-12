@@ -1,6 +1,8 @@
-import pytest
 from django.contrib.admin.sites import AdminSite
 from rest_framework.test import APIClient
+
+import pytest
+
 from tests import factories
 
 
