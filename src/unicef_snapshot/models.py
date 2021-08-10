@@ -1,11 +1,15 @@
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.postgres.fields import JSONField
 from django.core.exceptions import FieldDoesNotExist
 from django.db import models
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from model_utils.models import TimeStampedModel
+
+try:
+    from django.db.models import JSONField
+except ImportError:
+    from django.contrib.postgres.fields import JSONField
 
 
 class Activity(TimeStampedModel):
@@ -55,7 +59,7 @@ class Activity(TimeStampedModel):
             by_user = self.by_user.email
         return by_user
 
-    def get_action_display(self):
+    def get_display(self):
         if self.action == Activity.CREATE:
             return _('Created')
         elif self.action == Activity.UPDATE:

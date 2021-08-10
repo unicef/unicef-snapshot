@@ -1,10 +1,12 @@
+from django.contrib.auth import get_user_model
+
 import factory
 import factory.fuzzy
-from demo.sample.models import Author, Book, Tag
-from django.contrib.auth import get_user_model
 from factory import random
 
 from unicef_snapshot import models
+
+from demo.sample.models import Author, Book, Tag
 
 
 class UserFactory(factory.django.DjangoModelFactory):

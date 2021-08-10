@@ -1,7 +1,8 @@
-import pytest
 from django.forms import model_to_dict
-from tests.factories import AuthorFactory, BookFactory, UserFactory
 
+import pytest
+
+from tests.factories import AuthorFactory, BookFactory, UserFactory
 from unicef_snapshot import utils
 
 pytestmark = pytest.mark.django_db
@@ -94,4 +95,4 @@ def test_update():
             "after": [book.pk]
         }
     }
-    assert activity.get_action_display() == "Changed books"
+    assert activity.get_display() == "Changed books"

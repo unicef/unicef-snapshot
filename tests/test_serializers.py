@@ -1,6 +1,7 @@
-import pytest
 from django.urls import reverse
 from rest_framework import status
+
+import pytest
 
 from unicef_snapshot.models import Activity
 

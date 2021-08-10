@@ -1,8 +1,8 @@
-from django.conf.urls import url
+from django.conf.urls import re_path
 
 from unicef_snapshot.views import ActivityListView
 
 app_name = 'snapshot'
 urlpatterns = (
-    url(r'^activity/$', view=ActivityListView.as_view(), name='activity-list'),
+    re_path(r'^activity/$', view=ActivityListView.as_view(), name='activity-list'),
 )

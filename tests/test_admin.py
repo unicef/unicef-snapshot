@@ -1,11 +1,11 @@
+import pytest
 from unittest.mock import Mock
 
-import pytest
+from unicef_snapshot.admin import ActivityAdmin
+from unicef_snapshot.models import Activity
+
 from demo.sample.admin import AuthorAdmin
 from demo.sample.models import Author
-
-from unicef_snapshot.models import Activity
-from unicef_snapshot.admin import ActivityAdmin
 
 pytestmark = pytest.mark.django_db
 
