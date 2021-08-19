@@ -6,11 +6,6 @@ from django.db import models
 from django.utils.translation import gettext as _
 from model_utils.models import TimeStampedModel
 
-try:
-    from django.db.models import JSONField
-except ImportError:
-    from django.contrib.postgres.fields import JSONField
-
 
 class Activity(TimeStampedModel):
     CREATE = "create"
@@ -43,8 +38,8 @@ class Activity(TimeStampedModel):
         verbose_name=_("By User"),
         on_delete=models.CASCADE,
     )
-    data = JSONField(verbose_name=_("Data"))
-    change = JSONField(verbose_name=_("Change"), blank=True)
+    data = models.JSONField(verbose_name=_("Data"))
+    change = models.JSONField(verbose_name=_("Change"), blank=True)
 
     class Meta:
         ordering = ["-created"]
