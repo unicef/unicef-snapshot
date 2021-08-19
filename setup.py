@@ -36,7 +36,7 @@ setup(
     author_email='dev@unicef.org',
     license="Apache 2 License",
     description='Snapshot of data changes in django models',
-    long_description=codecs.open('README.md').read(),
+    long_description=codecs.open('README.rst').read(),
     package_dir={'': 'src'},
     packages=find_packages(where='src'),
     include_package_data=True,

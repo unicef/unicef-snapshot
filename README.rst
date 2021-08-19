@@ -1,24 +1,28 @@
-# UNICEF Snapshot
+UNICEF Snapshot
+===============
 
 Snapshot is a library that provides snapshot of data changes on django model.
 
 
-## Installation
-
+Installation
+------------
     pip install unicef-snapshot
 
 
-## Setup
+Setup
+-----
 
 Add ``unicef_snapshot`` to ``INSTALLED_APPS`` in ``settings.py``
 
     INSTALLED_APPS = [
         ...
         'unicef_snapshot',
+
     ]
 
 
-## Usage
+Usage
+-----
 
 Use ``unicef-snapshot`` in serializers
 
@@ -28,16 +32,19 @@ Use ``unicef-snapshot`` in serializers
         ...
 
 
-## Contributing
+Contributing
+============
 
-### Environment Setup
+Environment Setup
+-----------------
 
 To install the necessary libraries
 
     $ make install
 
 
-### Coding Standards
+Coding Standards
+----------------
 
 See `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ for complete details on the coding standards.
 
@@ -46,7 +53,8 @@ To run checks on the code to ensure code is in compliance
     $ make lint
 
 
-### Testing
+Testing
+-------
 
 Testing is important and tests are located in `tests/` directory and can be run with;
 
@@ -55,7 +63,8 @@ Testing is important and tests are located in `tests/` directory and can be run 
 Coverage report is viewable in `build/coverage` directory, and can be generated with;
 
 
-### Project Links
+Project Links
+-------------
 
  - Continuos Integration - https://circleci.com/gh/unicef/unicef-snapshot/tree/develop
  - Source Code - https://github.com/unicef/unicef-snapshot
