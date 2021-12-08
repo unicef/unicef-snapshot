@@ -58,6 +58,7 @@ setup(
             'pytest-django',
             'pytest-echo',
             'pytest-pythonpath',
+            'pytz',
             'psycopg2-binary',
           ),
     },

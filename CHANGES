@@ -1,3 +1,8 @@
+Release 1.2 (in development)
+-----------
+* added support Django 4.0
+
+
 Release 1.1
 -----------
 * fixed migrations
