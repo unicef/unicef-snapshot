@@ -55,6 +55,9 @@ class ActivityAdmin(admin.ModelAdmin):
     list_filter = (
         'action',
     )
+    raw_id_fields = (
+        'by_user',
+    )
 
     def has_add_permission(self, request):
         return False
