@@ -1,4 +1,9 @@
-Release 1.2
+Release 1.3 
+-----------
+* added support Django 4.1
+* admin performance use raw_id for users
+
+Release 1.2 (in development)
 -----------
 * added support Django 4.0
 
