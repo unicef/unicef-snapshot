@@ -17,17 +17,17 @@ class Activity(TimeStampedModel):
 
     target_content_type = models.ForeignKey(
         ContentType,
-        related_name='activity',
+        related_name="activity",
         on_delete=models.CASCADE,
         db_index=True,
-        verbose_name=_('Content Type'),
+        verbose_name=_("Content Type"),
     )
     target_object_id = models.CharField(
         max_length=255,
         db_index=True,
-        verbose_name=_('Target Object ID'),
+        verbose_name=_("Target Object ID"),
     )
-    target = GenericForeignKey('target_content_type', 'target_object_id')
+    target = GenericForeignKey("target_content_type", "target_object_id")
     action = models.CharField(
         verbose_name=_("Action"),
         max_length=50,
@@ -56,7 +56,7 @@ class Activity(TimeStampedModel):
 
     def get_display(self):
         if self.action == Activity.CREATE:
-            return _('Created')
+            return _("Created")
         elif self.action == Activity.UPDATE:
             titles = []
             try:
@@ -73,6 +73,6 @@ class Activity(TimeStampedModel):
             except AttributeError:
                 titles.append("unknown")
 
-            return _('Changed {}').format(', '.join(titles))
+            return _("Changed {}").format(", ".join(titles))
         else:
             raise NotImplementedError

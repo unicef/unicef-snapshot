@@ -8,36 +8,79 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('contenttypes', '0002_remove_content_type_name'),
+        ("contenttypes", "0002_remove_content_type_name"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Activity',
+            name="Activity",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', model_utils.fields.AutoCreatedField(
-                    default=django.utils.timezone.now, editable=False, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(
-                    default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('target_object_id', models.CharField(db_index=True, max_length=255, verbose_name='Target Object ID')),
-                ('action', models.CharField(choices=[('create', 'Create'),
-                                                     ('update', 'Update')], max_length=50, verbose_name='Action')),
-                ('data', models.JSONField(verbose_name='Data')),
-                ('change', models.JSONField(blank=True, verbose_name='Change')),
-                ('by_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                              to=settings.AUTH_USER_MODEL, verbose_name='By User')),
-                ('target_content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                                          related_name='activity', to='contenttypes.ContentType', verbose_name='Content Type')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    model_utils.fields.AutoCreatedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="created",
+                    ),
+                ),
+                (
+                    "modified",
+                    model_utils.fields.AutoLastModifiedField(
+                        default=django.utils.timezone.now,
+                        editable=False,
+                        verbose_name="modified",
+                    ),
+                ),
+                (
+                    "target_object_id",
+                    models.CharField(
+                        db_index=True, max_length=255, verbose_name="Target Object ID"
+                    ),
+                ),
+                (
+                    "action",
+                    models.CharField(
+                        choices=[("create", "Create"), ("update", "Update")],
+                        max_length=50,
+                        verbose_name="Action",
+                    ),
+                ),
+                ("data", models.JSONField(verbose_name="Data")),
+                ("change", models.JSONField(blank=True, verbose_name="Change")),
+                (
+                    "by_user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="By User",
+                    ),
+                ),
+                (
+                    "target_content_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="activity",
+                        to="contenttypes.ContentType",
+                        verbose_name="Content Type",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created'],
-                'verbose_name_plural': 'Activities',
+                "ordering": ["-created"],
+                "verbose_name_plural": "Activities",
             },
         ),
     ]

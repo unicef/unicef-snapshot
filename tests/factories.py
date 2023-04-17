@@ -41,9 +41,7 @@ class BookFactory(factory.django.DjangoModelFactory):
 
 class FuzzyActivityAction(factory.fuzzy.BaseFuzzyAttribute):
     def fuzz(self):
-        return random.randgen.choice(
-            [a[0] for a in models.Activity.ACTION_CHOICES]
-        )
+        return random.randgen.choice([a[0] for a in models.Activity.ACTION_CHOICES])
 
 
 class ActivityFactory(factory.django.DjangoModelFactory):

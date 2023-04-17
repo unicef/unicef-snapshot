@@ -6,8 +6,8 @@ from demo.sample.models import Author
 
 
 class AuthorAdmin(SnapshotModelAdmin):
-    list_display = ('name', )
-    inlines = (ActivityInline, )
+    list_display = ("name",)
+    inlines = (ActivityInline,)
 
 
 admin.site.register(Author, AuthorAdmin)

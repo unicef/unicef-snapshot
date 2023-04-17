@@ -48,6 +48,7 @@ setup(
     ),
     extras_require={
         'test': (
+            'black',
             'coverage',
             'django-fsm',
             'factory-boy',
@@ -65,10 +66,10 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.11',
         'Framework :: Django',
         'Framework :: Django :: 3.2',
-        'Framework :: Django :: 4.0',
-        'Framework :: Django :: 4.1',
+        'Framework :: Django :: 4.2',
         'Intended Audience :: Developers'],
     scripts=[],
 )

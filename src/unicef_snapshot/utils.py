@@ -64,12 +64,16 @@ def create_change_dict(prev_dict, current_dict):
     if prev_dict is not None:
         for k, v in prev_dict.items():
             if k in current_dict and current_dict[k] != prev_dict[k]:
-                change.update({
-                    k: jsonify({
-                        "before": prev_dict[k],
-                        "after": current_dict[k],
-                    })
-                })
+                change.update(
+                    {
+                        k: jsonify(
+                            {
+                                "before": prev_dict[k],
+                                "after": current_dict[k],
+                            }
+                        )
+                    }
+                )
 
     return change
 
@@ -84,16 +88,16 @@ def create_snapshot(target, target_before, by_user):
     change = create_change_dict(target_before, current_obj_dict)
 
     activity_kwargs = {
-        'target': target,
-        'by_user': by_user,
-        'action': action,
-        'data': current_obj_dict,
-        'change': change
+        "target": target,
+        "by_user": by_user,
+        "action": action,
+        "data": current_obj_dict,
+        "change": change,
     }
 
-    snapshot_additional_data = getattr(target, 'snapshot_additional_data', None)
+    snapshot_additional_data = getattr(target, "snapshot_additional_data", None)
     if callable(snapshot_additional_data):
-        activity_kwargs['data'].update(snapshot_additional_data(change))
+        activity_kwargs["data"].update(snapshot_additional_data(change))
 
     activity = Activity.objects.create(**activity_kwargs)
 

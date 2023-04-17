@@ -15,7 +15,7 @@ def test_jsonify():
 
 
 def test_jsonify_unicode():
-    author = AuthorFactory(name=u'R\xe4dda')
+    author = AuthorFactory(name="R\xe4dda")
     j = utils.jsonify(model_to_dict(author))
     assert j["name"] == author.name
 
@@ -60,12 +60,7 @@ def test_change():
     before = {"test": "unknown"}
     after = {"test": "known"}
     change = utils.create_change_dict(before, after)
-    assert change == {
-        "test": {
-            "before": "unknown",
-            "after": "known"
-        }
-    }
+    assert change == {"test": {"before": "unknown", "after": "known"}}
 
 
 def test_create():
@@ -89,10 +84,5 @@ def test_update():
     assert activity.action == activity.UPDATE
     assert activity.by_user == user
     assert activity.data["name"] == author.name
-    assert activity.change == {
-        "books": {
-            "before": [],
-            "after": [book.pk]
-        }
-    }
+    assert activity.change == {"books": {"before": [], "after": [book.pk]}}
     assert activity.get_display() == "Changed books"

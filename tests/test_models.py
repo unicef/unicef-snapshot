@@ -9,11 +9,7 @@ pytestmark = pytest.mark.django_db
 def test_str():
     user = UserFactory()
     author = AuthorFactory()
-    activity = ActivityFactory(
-        target=author,
-        action=Activity.CREATE,
-        by_user=user
-    )
+    activity = ActivityFactory(target=author, action=Activity.CREATE, by_user=user)
     assert str(activity) == "{} {} {}".format(user, Activity.CREATE, author)
 
 
@@ -58,9 +54,7 @@ def test_get_display_update_no_change_value():
 def test_get_display_update_many_field():
     author = AuthorFactory()
     activity = ActivityFactory(
-        target=author,
-        action=Activity.UPDATE,
-        change={"books": ""}
+        target=author, action=Activity.UPDATE, change={"books": ""}
     )
     assert activity.get_display() == "Changed books"
 
@@ -68,9 +62,7 @@ def test_get_display_update_many_field():
 def test_get_display_update_invalid_field():
     author = AuthorFactory()
     activity = ActivityFactory(
-        target=author,
-        action=Activity.UPDATE,
-        change={"wrong": ""}
+        target=author, action=Activity.UPDATE, change={"wrong": ""}
     )
     assert activity.get_display() == "Changed "
 
@@ -78,8 +70,6 @@ def test_get_display_update_invalid_field():
 def test_get_display_update():
     author = AuthorFactory()
     activity = ActivityFactory(
-        target=author,
-        action=Activity.UPDATE,
-        change={"name": ""}
+        target=author, action=Activity.UPDATE, change={"name": ""}
     )
     assert activity.get_display() == "Changed name"

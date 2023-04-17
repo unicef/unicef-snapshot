@@ -6,4 +6,4 @@ from demo.sample.models import Author
 class AuthorSerializer(SnapshotModelSerializer):
     class Meta:
         model = Author
-        fields = ("__all__")
+        fields = "__all__"

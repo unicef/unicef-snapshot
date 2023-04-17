@@ -14,9 +14,7 @@ def test_snapshot_model_serializer(api_client, author, user):
     api_client.force_login(user)
     response = api_client.patch(
         reverse("sample:author-detail", args=[author.pk]),
-        data={
-            "name": "Changed"
-        },
+        data={"name": "Changed"},
     )
 
     assert response.status_code == status.HTTP_200_OK
