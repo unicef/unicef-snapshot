@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unicef-snapshot"
+dynamic = ["version"]
+description = "Snapshot of data changes in django models"
+readme = "README.rst"
+license = "Apache-2.0 OR MIT"
+authors = [
+    { name = "UNICEF", email = "dev@unicef.org" },
+]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "Django",
+    "django-model-utils",
+    "djangorestframework",
+    "pytz",
+    "setuptools"  # temporary for python 3.12
+]
+
+[project.optional-dependencies]
+test = [
+    "black",
+    "coverage",
+    "django-fsm",
+    "factory-boy",
+    "faker",
+    "flake8",
+    "isort",
+    "psycopg2-binary",
+    "pytest",
+    "pytest-cov",
+    "pytest-django",
+    "pytest-echo",
+]
+
+[project.urls]
+Homepage = "https://github.com/unicef/unicef-snapshot"
+
+[tool.hatch.version]
+path = "src/unicef_snapshot/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["/src/unicef_snapshot"]
